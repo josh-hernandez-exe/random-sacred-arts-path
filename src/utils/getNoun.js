@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 const nounUrl =
-  'https://raw.githubusercontent.com/taikuukaits/SimpleWordlists/master/Wordlist-Nouns-All.txt';
+  'https://raw.githubusercontent.com/janester/mad_libs/master/List%20of%20Nouns.txt';
 
 const nounArray = [];
 
 async function getNounList() {
   const result = await axios.get(nounUrl);
   let { data } = result;
-  data = data.split('\n');
+  data = data.split(/\s+/);
 
   data.sort();
 
