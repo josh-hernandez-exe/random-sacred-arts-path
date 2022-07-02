@@ -15,9 +15,20 @@ async function getAdjectiveList() {
   adjectiveArray.push(...data);
 }
 
-export default async function getRandomAdjective() {
+export async function loadAdjectiveArray() {
   if (adjectiveArray.length === 0) await getAdjectiveList();
+}
 
-  const randomIndex = Math.round(Math.random() * adjectiveArray.length);
+export function getRandomAdjectiveSync() {
+  if (adjectiveArray.length === 0)
+    throw new Error('adjectiveArray not initialized');
+
+  const randomIndex = Math.floor(Math.random() * adjectiveArray.length);
   return adjectiveArray[`${randomIndex}`];
+}
+
+export default async function getRandomAdjective() {
+  await loadAdjectiveArray();
+
+  return getRandomAdjectiveSync();
 }

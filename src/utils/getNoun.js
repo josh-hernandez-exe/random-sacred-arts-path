@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const nounUrl =
-  'https://raw.githubusercontent.com/taikuukaits/SimpleWordlists/master/Wordlist-Adjectives-All.txt';
+  'https://raw.githubusercontent.com/taikuukaits/SimpleWordlists/master/Wordlist-Nouns-All.txt';
 
 const nounArray = [];
 
@@ -15,9 +15,19 @@ async function getNounList() {
   nounArray.push(...data);
 }
 
-export default async function getRandomNoun() {
+export async function loadNounArray() {
   if (nounArray.length === 0) await getNounList();
+}
 
-  const randomIndex = Math.round(Math.random() * nounArray.length);
+export function getRandomNounSync() {
+  if (nounArray.length === 0) throw new Error('nounArray not initialized');
+
+  const randomIndex = Math.floor(Math.random() * nounArray.length);
   return nounArray[`${randomIndex}`];
+}
+
+export default async function getRandomNoun() {
+  await loadNounArray();
+
+  return getRandomNounSync();
 }
