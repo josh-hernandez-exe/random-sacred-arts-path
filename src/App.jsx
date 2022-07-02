@@ -1,13 +1,13 @@
 import React from 'react';
 
 import './App.css';
-import RandomSacraedPath from './components/atoms/RandomSacraedPath';
+import DisplayRandomSacredPathWithButton from './components/molecule/DisplayRandomSacredPathWithButton';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <RandomSacraedPath />
+        <DisplayRandomSacredPathWithButton />
       </header>
     </div>
   );
