@@ -4,6 +4,7 @@
   "description": "Website to generate random sacraed arts paths from the world of Cradle by Will Wight",
   "main": "index.js",
   "repository": "git@github.com:josh-hernandez-exe/random-sacred-arts-path.git",
+  "homepage": "https://josh-hernandez-exe.github.io/random-sacred-arts-path",
   "author": "Josh Hernandez <I.Am.Mr.Josh.Hernandez@gmail.com>",
   "license": "",
   "private": true,
@@ -20,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +55,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-security": "^1.4.0",
+    "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
     "prettier": "^2.0.5",
     "prettier-eslint-cli": "^5.0.0"
