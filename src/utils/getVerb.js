@@ -1,9 +1,12 @@
 import axios from 'axios';
+import seedrandom from 'seedrandom';
 
 const verbUrl =
   'https://raw.githubusercontent.com/monolithpl/verb.forms.dictionary/master/csv/verbs-all.csv';
 
 const verbArray = [];
+
+let rng = null;
 
 async function getVerbList() {
   const result = await axios.get(verbUrl);
@@ -22,10 +25,14 @@ export async function loadVerbArray() {
   if (verbArray.length === 0) await getVerbList();
 }
 
-export function getRandomVerbSync() {
+export function getRandomVerbSync({ seed = undefined } = {}) {
   if (verbArray.length === 0) throw new Error('verbArray not initialized');
 
-  const randomIndex = Math.floor(Math.random() * verbArray.length);
+  if (rng === null || seed !== undefined) {
+    rng = seedrandom(seed);
+  }
+
+  const randomIndex = Math.floor(rng() * verbArray.length);
   return verbArray[`${randomIndex}`];
 }
 

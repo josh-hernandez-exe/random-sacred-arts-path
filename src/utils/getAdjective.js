@@ -1,10 +1,12 @@
 import axios from 'axios';
+import seedrandom from 'seedrandom';
 
 const adjectiveUrl =
   'https://raw.githubusercontent.com/taikuukaits/SimpleWordlists/master/Wordlist-Adjectives-All.txt';
 
 const adjectiveArray = [];
 
+let rng = null;
 async function getAdjectiveList() {
   const result = await axios.get(adjectiveUrl);
   let { data } = result;
@@ -19,11 +21,15 @@ export async function loadAdjectiveArray() {
   if (adjectiveArray.length === 0) await getAdjectiveList();
 }
 
-export function getRandomAdjectiveSync() {
+export function getRandomAdjectiveSync({ seed = undefined } = {}) {
   if (adjectiveArray.length === 0)
     throw new Error('adjectiveArray not initialized');
 
-  const randomIndex = Math.floor(Math.random() * adjectiveArray.length);
+  if (rng === null || seed !== undefined) {
+    rng = seedrandom(seed);
+  }
+
+  const randomIndex = Math.floor(rng() * adjectiveArray.length);
   return adjectiveArray[`${randomIndex}`];
 }
 

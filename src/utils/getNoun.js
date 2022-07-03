@@ -1,9 +1,12 @@
 import axios from 'axios';
+import seedrandom from 'seedrandom';
 
 const nounUrl =
   'https://raw.githubusercontent.com/janester/mad_libs/master/List%20of%20Nouns.txt';
 
 const nounArray = [];
+
+let rng = null;
 
 async function getNounList() {
   const result = await axios.get(nounUrl);
@@ -19,10 +22,14 @@ export async function loadNounArray() {
   if (nounArray.length === 0) await getNounList();
 }
 
-export function getRandomNounSync() {
+export function getRandomNounSync({ seed = undefined } = {}) {
   if (nounArray.length === 0) throw new Error('nounArray not initialized');
 
-  const randomIndex = Math.floor(Math.random() * nounArray.length);
+  if (rng === null || seed !== undefined) {
+    rng = seedrandom(seed);
+  }
+
+  const randomIndex = Math.floor(rng() * nounArray.length);
   return nounArray[`${randomIndex}`];
 }
 
