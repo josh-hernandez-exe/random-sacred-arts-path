@@ -17,6 +17,8 @@ export function getRandomSacredPathSync({ seed = undefined } = {}) {
     rng = seedrandom(seed);
   }
 
+  // Note that this is set up so that this function and each child function all
+  // do one call to the RNG. This is for easier reproducability of generated values.
   const randVal = rng();
   const noun = getRandomNounSync({ seed });
   const adjactive = getRandomAdjectiveSync({ seed });
