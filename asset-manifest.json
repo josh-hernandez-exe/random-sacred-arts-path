@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/random-sacred-arts-path/static/css/main.14cd4d9b.css",
-    "main.js": "/random-sacred-arts-path/static/js/main.3b967f5c.js",
+    "main.js": "/random-sacred-arts-path/static/js/main.d441998e.js",
     "index.html": "/random-sacred-arts-path/index.html",
     "main.14cd4d9b.css.map": "/random-sacred-arts-path/static/css/main.14cd4d9b.css.map",
-    "main.3b967f5c.js.map": "/random-sacred-arts-path/static/js/main.3b967f5c.js.map"
+    "main.d441998e.js.map": "/random-sacred-arts-path/static/js/main.d441998e.js.map"
   },
   "entrypoints": [
     "static/css/main.14cd4d9b.css",
-    "static/js/main.3b967f5c.js"
+    "static/js/main.d441998e.js"
   ]
 }
