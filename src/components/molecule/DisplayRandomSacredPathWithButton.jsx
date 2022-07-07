@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
 
 import RandomSacraedPath from '../atoms/RandomSacraedPath';
@@ -16,9 +19,19 @@ export default function DisplayRandomSacredPathWithButton({ seed = 0 } = {}) {
   return (
     <div>
       <RandomSacraedPath index={clickCount} seed={seed} />
-      <button onClick={incrementClickCount} type="button">
-        Refresh
-      </button>
+      <Button onClick={incrementClickCount} type="button">
+        <RefreshIcon />
+      </Button>
+      <br />
+      <TextField
+        id="Refresh-Count"
+        label="Refresh Count"
+        value={`${clickCount}`}
+        InputProps={{
+          readOnly: true,
+        }}
+        variant="filled"
+      />
     </div>
   );
 }

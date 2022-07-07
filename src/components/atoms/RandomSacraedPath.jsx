@@ -16,7 +16,7 @@ export default function RandomSacraedPath({ index = 0, seed = null } = {}) {
       setPathName(randPathName);
     };
     updateRandomSacredPath();
-  }, [index]);
+  }, [index, seed]);
 
   return (
     <div>

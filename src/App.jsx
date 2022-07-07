@@ -1,13 +1,14 @@
 import React from 'react';
 
 import './App.css';
-import DisplayRandomSacredPathWithButton from './components/molecule/DisplayRandomSacredPathWithButton';
+import DisplayRandomSacredPathWithButtonWithSeed from './components/molecule/DisplayRandomSacredPathWithButtonWithSeed';
 
 function App() {
+  const initialSeed = Math.round(1e6 * Math.random());
   return (
     <div className="App">
       <header className="App-header">
-        <DisplayRandomSacredPathWithButton />
+        <DisplayRandomSacredPathWithButtonWithSeed initialSeed={initialSeed} />
       </header>
     </div>
   );
